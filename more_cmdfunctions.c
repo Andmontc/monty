@@ -7,10 +7,11 @@
  */
 void mswap(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp = *stack;
 	int a;
 	int b;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	if (!tmp|| !(tmp->next))
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
