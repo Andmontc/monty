@@ -13,5 +13,5 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	montyread(argv[1]);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
