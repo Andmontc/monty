@@ -1,49 +1,33 @@
 #include "monty.h"
 /**
- * freestack - Function that free the double linked list
- * @stack: double linked list
+ * free_node - frees a stack_t stack
+ * @stack: stack to be freed
+ * Return: void
  */
-void freestack(stack_t **stack)
+void free_node(stack_t **stack)
 {
-	int i;
-	stack_t *ptr = *stack;
+	stack_t *current;
 
-	for (i = 0; ptr != NULL; i++)
+	while (*stack != NULL)
 	{
-		(*stack) = (*stack)->next;
-		free(ptr);
-		ptr = *stack;
+		current = *stack;
+		*stack = (*stack)->next;
+		free(current);
 	}
-	fclose(monty.file);
 }
+
 /**
- * checkint - function that check for integers
- * @str: line to check
- * Return: 0 integer -1 error
+ * freestack - frees line and fp
+ * @stack: stack to free
+ * @line: line to free from getline
+ * @fp: file pointer to free
+ * Return: void
  */
-int checkint(char *str)
+void freestack(stack_t *stack, char *line, FILE *fp)
 {
-	if (!str)
-		return (-1);
+	if (stack != NULL)
+		free_node(&stack);
 
-	str = strtok(str, "\n");
-
-	if (*str == '-')
-	{
-		str++;
-		if (*str == '\0')
-			return (-1);
-	}
-
-
-	while (*str)
-	{
-
-		if (isdigit(*str) == 0)
-			return (-1);
-
-		str++;
-	}
-
-	return (0);
+	free(line);
+	fclose(fp);
 }
