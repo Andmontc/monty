@@ -1,34 +1,32 @@
 #include "monty.h"
-montyfile monty = {NULL, NULL, 0};
 /**
  * montyread - function that reads the monty file
  * @file: file to read
  */
 void montyread(char *file)
 {
+	FILE *montyfile;
 	stack_t *mstack = NULL;
 	unsigned int nline = 0;
-	char line[1024];
+	char *margs;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t mread;
 
-	monty.file = fopen(file, "r");
-	if (!monty.file)
+	montyfile = fopen(file, "r");
+	if (!montyfile)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
-	while (1)
+	while ((mread = getline(&line, &len, montyfile)) != -1)
 	{
-		fgets(line, 1024, monty.file);
-		if (feof(monty.file))
-			break;
-		if (strcmp(line, "\n") == 0)
-			continue;
 		nline++;
-		monty.args = strdup(line);
-		monty.args = strtok(monty.args, "\n");
-		getmontylines(line, nline, &mstack);
-		free(monty.args);
+		margs = strtok(line, DELIM);
+		if (margs == NULL || strncmp(margs, "#", 1) == 0)
+			continue;
+		getmontylines(margs, nline, &mstack);
 	}
-	freestack(&mstack);
+	freestack(mstack, line, montyfile);
 }
