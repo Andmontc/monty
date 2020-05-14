@@ -70,3 +70,38 @@ void mnop(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 }
+/**
+ * mpint - function that prints the top of the stack
+ * @stack: double linked list
+ * @line_number: number of lines
+ */
+void mpint(stack_t **stack, unsigned int line_number)
+{
+	int data;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	data = (*stack)->n;
+	printf("%u\n", data);
+}
+/**
+ * mpop - function that removes the top of the stack
+ * @stack: double linked list
+ * @line_number: number of lines
+ */
+void mpop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *node;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	node = (*stack)->next;
+	free(*stack);
+	*stack = node;
+}
