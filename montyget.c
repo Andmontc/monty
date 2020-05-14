@@ -14,7 +14,7 @@ int getmontylines(char *line, unsigned int lnum, stack_t **stack)
 		{"pall", mpall},
 		{"pint", mpint},
 		{"pop", mpop},
-		{"nop", mnop},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 

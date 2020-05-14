@@ -65,7 +65,7 @@ void mpall(stack_t **stack, unsigned int num)
  * @stack: double linked list
  * @line_number: number of lines
  */
-void mnop(stack_t **stack, unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
