@@ -17,8 +17,9 @@ void montyread(char *file)
 		exit(EXIT_FAILURE);
 	}
 
-	while (fgets(line, 1024, monty.file))
+	while (1)
 	{
+		fgets(line, 1024, monty.file);
 		nline++;
 		if (feof(monty.file))
 			break;
