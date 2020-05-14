@@ -14,7 +14,7 @@ void getmontylines(char *line, unsigned int lnum, stack_t **stack)
 		{"pall", mpall},
 		{NULL, NULL}
 	};
-	cmd = strtok(line, " \n\t");
+	cmd = strtok(line, " \n\t\r");
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(cmd, op[i].opcode) == 0)
