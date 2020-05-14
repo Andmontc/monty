@@ -68,5 +68,6 @@ int checkint(char *str);
 /* commands functions */
 void mpush(stack_t **stack, unsigned int num);
 void mpall(stack_t **stack, unsigned int num);
+void mnop(stack_t **stack, unsigned int line_number);
 
 #endif

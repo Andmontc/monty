@@ -10,7 +10,7 @@ void getmontylines(char *line, unsigned int lnum, stack_t **stack)
 	char *cmd;
 	int i;
 	instruction_t op[] = {
-		{"push", mpush},
+		{"push", mpush}, {"nop", mnop},
 		{"pall", mpall},
 		{NULL, NULL}
 	};
