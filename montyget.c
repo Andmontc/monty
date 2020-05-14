@@ -10,10 +10,14 @@ int getmontylines(char *line, unsigned int lnum, stack_t **stack)
 {
 	int i;
 	instruction_t op[] = {
-		{"push", mpush}, {"nop", mnop},
+		{"push", mpush},
 		{"pall", mpall},
+		{"pint", mpint},
+		{"pop", mpop},
+		{"nop", mnop},
 		{NULL, NULL}
 	};
+
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(line, op[i].opcode) == 0)
