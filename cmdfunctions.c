@@ -8,37 +8,38 @@ void mpush(stack_t **stack, unsigned int num)
 {
 	stack_t *node = malloc(sizeof(stack_t));
 	int i;
-	char *command = strtok(monty.args, " \t");
+	char *command = strtok(NULL, DELIM);
 
-	command = strtok(NULL, " \t");
 	if (node == NULL)
 	{
-		freestack(stack);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (command == NULL || checkint(command) == -1)
+	if (command == NULL)
 	{
-		free(node);
-		freestack(stack);
 		fprintf(stderr, "L%u: usage: push integer\n", num);
 		exit(EXIT_FAILURE);
 	}
-	i = atoi(command);
-	node->prev = NULL;
-	node->n = i;
-
-	if ((*stack) == NULL)
+	for (i = 0; command[i] != '\0'; i++)
 	{
-		node->next = NULL;
-		*stack = node;
+		if (command[0] == '-' && i == 0)
+			continue;
+		if (isdigit(command[i]) == 0)
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", num);
+			exit(EXIT_FAILURE);
+		}
 	}
-	else
+	node->n = atoi(command);
+	node->prev = NULL;
+	node->next = NULL;
+
+	if (*stack != NULL)
 	{
 		node->next = *stack;
-		node->next->prev = node;
-		(*stack) = node;
+		(*stack)->prev = node;
 	}
+	*stack = node;
 }
 /**
  * mpall - function that print the stack
