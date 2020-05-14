@@ -55,8 +55,9 @@ void free_node(stack_t **stack);
 /* commands functions */
 void mpush(stack_t **stack, unsigned int num);
 void mpall(stack_t **stack, unsigned int num);
-void nop(stack_t **stack, unsigned int line_number);
+void mnop(stack_t **stack, unsigned int line_number);
 void mpint(stack_t **stack, unsigned int line_number);
 void mpop(stack_t **stack, unsigned int line_number);
+void mswap(stack_t **stack, unsigned int line_number);
 
 #endif
