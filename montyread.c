@@ -23,7 +23,7 @@ void montyread(char *file)
 		if (feof(monty.file))
 			break;
 		if (strcmp(line, "\n") == 0)
-			continue; 
+			continue;
 
 		monty.args = strdup(line);
 		monty.args = strtok(monty.args, "\n");
