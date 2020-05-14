@@ -14,7 +14,7 @@ void mpush(stack_t **stack, unsigned int num)
 	if (node == NULL)
 	{
 		freestack(stack);
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	if (command == NULL || checkint(command) == -1)

@@ -24,6 +24,6 @@ void getmontylines(char *line, unsigned int lnum, stack_t **stack)
 		}
 	}
 	freestack(stack);
-	printf("L%d: unknown instruction %s\n", lnum, cmd);
+	fprintf(stderr, "L%d: unknown instruction %s\n", lnum, cmd);
 	exit(EXIT_FAILURE);
 }

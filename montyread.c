@@ -13,7 +13,7 @@ void montyread(char *file)
 	monty.file = fopen(file, "r");
 	if (!monty.file)
 	{
-		printf("Error: Can't open file %s\n", file);
+		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
