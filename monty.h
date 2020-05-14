@@ -1,13 +1,13 @@
 #ifndef _MONTY_H
 #define _MONTY_H
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <ctype.h>
 
 /* structs */
@@ -41,30 +41,17 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct montyfile - global struct for monty files
- * @file: monty file reading from
- * @args: lines
- * @mode: stack or queue mode (stack mode default)
- * Description: struct for the monty file to read
- */
-typedef struct montyfile
-{
-	FILE *file;
-	char *args;
-	int mode;
-} montyfile;
-
-extern montyfile monty;
+/* Macro */
+#define DELIM " \n\t\r"
 
 /* Functions */
 /*--------------------*/
 /* Main functions */
 void montyread(char *file);
-void getmontylines(char *line, unsigned int lnum, stack_t **stack);
+int getmontylines(char *line, unsigned int lnum, stack_t **stack);
 /* Aux Functions */
-void freestack(stack_t **stack);
-int checkint(char *str);
+void freestack(stack_t *stack, char *line, FILE *fp);
+void free_node(stack_t **stack);
 /* commands functions */
 void mpush(stack_t **stack, unsigned int num);
 void mpall(stack_t **stack, unsigned int num);
