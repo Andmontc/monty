@@ -59,3 +59,13 @@ void mpall(stack_t **stack, unsigned int num)
 		tmp = tmp->next;
 	}
 }
+/**
+ * mnop - function that does nothing
+ * @stack: double linked list
+ * @line_number: number of lines
+ */
+void mnop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
