@@ -22,6 +22,8 @@ void getmontylines(char *line, unsigned int lnum, stack_t **stack)
 			op[i].f(stack, lnum);
 			return;
 		}
+		if (strncmp(cmd, "#", 1) == 0)
+			return;
 	}
 	freestack(stack);
 	fprintf(stderr, "L%d: unknown instruction %s\n", lnum, cmd);
