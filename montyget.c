@@ -4,28 +4,24 @@
  * @line: argument
  * @lnum: number of lines of the file
  * @stack: double linked list
+ * Return: sucess
  */
-void getmontylines(char *line, unsigned int lnum, stack_t **stack)
+int getmontylines(char *line, unsigned int lnum, stack_t **stack)
 {
-	char *cmd;
 	int i;
 	instruction_t op[] = {
 		{"push", mpush}, {"nop", mnop},
 		{"pall", mpall},
 		{NULL, NULL}
 	};
-	cmd = strtok(line, " \n\t\r");
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
-		if (strcmp(cmd, op[i].opcode) == 0)
+		if (strcmp(line, op[i].opcode) == 0)
 		{
 			op[i].f(stack, lnum);
-			return;
+			return (EXIT_SUCCESS);
 		}
-		if (strncmp(cmd, "#", 1) == 0)
-			return;
 	}
-	freestack(stack);
-	fprintf(stderr, "L%u: unknown instruction %s\n", lnum, cmd);
+	fprintf(stderr, "L%u: unknown instruction %s\n", lnum, line);
 	exit(EXIT_FAILURE);
 }
