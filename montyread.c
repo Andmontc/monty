@@ -20,12 +20,11 @@ void montyread(char *file)
 	while (1)
 	{
 		fgets(line, 1024, monty.file);
-		nline++;
 		if (feof(monty.file))
 			break;
 		if (strcmp(line, "\n") == 0)
 			continue;
-
+		nline++;
 		monty.args = strdup(line);
 		monty.args = strtok(monty.args, "\n");
 		getmontylines(line, nline, &mstack);
