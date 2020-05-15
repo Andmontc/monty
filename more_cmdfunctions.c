@@ -45,3 +45,30 @@ void mpchar(stack_t **stack, unsigned int line_number)
 	putchar(letter);
 	putchar(10);
 }
+/**
+ * mpstr - print the string data of the head
+ * @stack: double linked list
+ * @line_number: number of lines
+ */
+void mpstr(stack_t **stack, unsigned int line_number)
+{
+	int letter;
+	stack_t *ptr;
+	(void)line_number;
+
+	ptr = *stack;
+	while (ptr)
+	{
+		letter = ptr->n; /* data in the actual node */
+		if (letter > 0 && letter <= 127)
+		{
+			ptr = ptr->next;
+			putchar(letter);
+		}
+		else
+		{
+			break;
+		}
+		putchar(10);
+	}
+}
