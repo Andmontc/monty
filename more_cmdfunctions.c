@@ -52,24 +52,23 @@ void mpchar(stack_t **stack, unsigned int line_number)
  */
 void mpstr(stack_t **stack, unsigned int line_number)
 {
+	int letter;
 	stack_t *ptr;
 	(void)line_number;
 
 	ptr = *stack;
-	if ((*stack))
+	while (ptr != NULL)
 	{
-		while (ptr->next && ptr->n != 0)
+		letter = ptr->n; /* data in the actual node */
+		if (letter > 0 && letter <= 127)
 		{
-			if (ptr->n > 32 && ptr->n < 127)
-			{
-				printf("%c", ptr->n);
-			}
 			ptr = ptr->next;
+			putchar(letter);
 		}
-		putchar(10);
-	}
-	else
-	{
+		else
+		{
+			break;
+		}
 		putchar(10);
 	}
 }
