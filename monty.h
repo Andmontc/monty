@@ -52,12 +52,14 @@ int getmontylines(char *line, unsigned int lnum, stack_t **stack);
 /* Aux Functions */
 void freestack(stack_t *stack, char *line, FILE *fp);
 void free_node(stack_t **stack);
-/* commands functions */
+/* print and stack functions */
 void mpush(stack_t **stack, unsigned int num);
 void mpall(stack_t **stack, unsigned int num);
 void mnop(stack_t **stack, unsigned int line_number);
 void mpint(stack_t **stack, unsigned int line_number);
 void mpop(stack_t **stack, unsigned int line_number);
 void mswap(stack_t **stack, unsigned int line_number);
+/* math functions */
+void madd(stack_t **stack, unsigned int line_number);
 
 #endif
