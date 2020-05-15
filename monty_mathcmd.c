@@ -33,7 +33,7 @@ void msub(stack_t **stack, unsigned int line_number)
 
 	if (!tmp || !(tmp->next))
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	sub = tmp->next->n - tmp->n;
