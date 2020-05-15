@@ -60,7 +60,6 @@ void mpint(stack_t **stack, unsigned int line_number);
 void mpop(stack_t **stack, unsigned int line_number);
 void mswap(stack_t **stack, unsigned int line_number);
 void mpchar(stack_t **stack, unsigned int line_number);
-void mpstr(stack_t **stack, unsigned int line_number);
 /* math functions */
 void madd(stack_t **stack, unsigned int line_number);
 void msub(stack_t **stack, unsigned int line_number);

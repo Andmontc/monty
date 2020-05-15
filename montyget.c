@@ -16,13 +16,12 @@ int getmontylines(char *line, unsigned int lnum, stack_t **stack)
 		{"pop", mpop}, {"div", mdiv},
 		{"nop", mnop}, {"mod", mmod},
 		{"mul", mmul}, {"pchar", mpchar},
-		{"pstr", mpstr},
 		{NULL, NULL}
 	};
 
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
-		if (strcmp(line, op[i].opcode) == 0)
+		if (strcmp(line, op[i].opcode) == 0) 
 		{
 			op[i].f(stack, lnum);
 			return (EXIT_SUCCESS);
